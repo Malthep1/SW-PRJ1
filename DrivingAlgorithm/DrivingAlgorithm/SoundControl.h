@@ -3,7 +3,11 @@
 #include <stdlib.h>
 
 void SetupSOMO();
-void PlayTrackOne();
-void PlayTrackTwo();
-void PlayTrackThree();
+
+void PlayTrackOne(); // Lyd til når banen startes
+
+void PlayTrackTwo(); // Lyd til refleksbrik
+
+void PlayTrackThree(); // Lyd til når banen er gennemført
+
 void SetVolumeMax();
