@@ -6,6 +6,7 @@
 void SetupSOMO(){
 	
 	InitUART(9600, 8); // InitUart 9600 baudrate 8 databit	
+	SetVolumeMax();
 }
 
 void SetVolumeMax(){

@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>TestSound</AssemblyName>
-    <Name>TestSound</Name>
-    <RootNamespace>TestSound</RootNamespace>
+    <AssemblyName>DrivingAlgorithm</AssemblyName>
+    <Name>DrivingAlgorithmCar</Name>
+    <RootNamespace>DrivingAlgorithm</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -122,10 +122,16 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LightsControl.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SoundControl.c">
+    <Compile Include="MotorControl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensor_driver.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="SoundControl.h">
