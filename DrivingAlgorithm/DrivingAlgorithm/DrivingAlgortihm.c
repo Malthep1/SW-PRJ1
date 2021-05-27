@@ -3,6 +3,7 @@
 #include "SoundControl.h"
 #include "Sensor_driver.h"
 #include "DrivingAlgortihm.h"
+
 void drivingAlgorihm(){
 	
 	int state = getCounter();
@@ -83,10 +84,11 @@ void drivingAlgorihm(){
 		case 11:
 		// Stop (refleksbrik 7)
 		PlayTrackThree();
-		stop()
+		stop();
 		break;
 		
 		default:
 		
 		break;
+	}
 }

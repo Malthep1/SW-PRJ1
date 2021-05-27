@@ -1,7 +1,7 @@
 
 #ifndef LIGHTSCONTROL_H_
 #define LIGHTSCONTROL_H_
-#include "UART_driver.h"
+#include "uart.h"
 
 void turnOnFL();
 

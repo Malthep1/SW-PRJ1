@@ -122,19 +122,43 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DrivingAlgortihm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DrivingAlgortihm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LightsControl.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LightsControl.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MotorControl.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MotorControl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensor_driver.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensor_driver.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SoundControl.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="SoundControl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="switch.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="switch.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.c">
