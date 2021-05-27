@@ -1,3 +1,4 @@
+#pragma once
 #include "LightsControl.h"
 
 void turnOnFL(){
