@@ -1,9 +1,10 @@
 /*
- * interrupt.c
+ * Sensor_Driver.c
  *
- * Created: 12-05-2021 12:46:33
+ * Created: 27-05-2021 19:28:34
  *  Author: Frederik
  */ 
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #define F_CPU 16000000
@@ -31,13 +32,13 @@ ISR (INT1_vect)
 
 void initInterrupt()
 {
-	 sei();
-	 DDRD = 0;
-	 EIMSK |= 0b00000011;
-	 EICRA = 0b00001111;
+	sei();
+	DDRD = 0;
+	EIMSK |= 0b00000011;
+	EICRA = 0b00001111;
 }
 
-char getCounter()
+const unsigned char getCounter()
 {
 	return counter;
 }
