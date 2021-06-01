@@ -2,51 +2,61 @@
 #include "SoundControl.h"
 #include <stdio.h>
 #include <stdlib.h>
+#define F_CPU 16000000
+#include <util/delay.h>
+// se note ift. checksum i oneNote
+
+
+
+unsigned char CMD = 0x00;
+unsigned char Feedback = 0x00;
+unsigned char Para1 = 0x00;
+unsigned char Para2 = 0x00;
+unsigned short checksum = 0xFFFF;
+unsigned char checksum1 = 0x00;
+unsigned char checksum2 = 0x00;
+
 
 void SetupSOMO(){
-	
-	InitUART(9600, 8); // InitUart 9600 baudrate 8 databit	
-	SetVolumeMax();
+	initUARTnew();	
+	_delay_ms(1000);
+	SetVolume(15);
+	_delay_ms(1000);
 }
 
-void SetVolumeMax(){
-	SendChar(0x7E);
-	SendChar(0x06);
-	SendChar(0x00);
-	SendChar(0x00);
-	SendChar(0x1E);
-	SendChar(0xFF);
-	SendChar(0xDC);
-	SendChar(0xEF);
+void SetVolume(char volume)/*volumen 0-30*/{
+		CMD = 0x06;
+		Feedback = 0x00;
+		Para1 = 0x00;
+		Para2 = volume;
+		checksum = (0xFFFF - (CMD + Feedback + Para1 + Para2)+1);		
+		checksum1 = (checksum>>8) & 0xFF;
+		checksum2 = (checksum) & 0xFF;
+		
+		SendChar(0x7E);
+		SendChar(CMD);
+		SendChar(Feedback);
+		SendChar(Para1);
+		SendChar(Para2);
+		SendChar(checksum1);
+		SendChar(checksum2);
+		SendChar(0xEF);
 }
-
-void PlayTrackOne(){
-	SendChar(0x7E);
-	SendChar(0x03);
-	SendChar(0x00);
-	SendChar(0x00);
-	SendChar(0x01);
-	SendChar(0xFF);
-	SendChar(0xFC);
-	SendChar(0xEF);
-}
-void PlayTrackTwo(){
-	SendChar(0x7E);
-	SendChar(0x03);
-	SendChar(0x00);
-	SendChar(0x00);
-	SendChar(0x02);
-	SendChar(0xFF);
-	SendChar(0xFB);
-	SendChar(0xEF);
-}
-void PlayTrackThree(){
-	SendChar(0x7E);
-	SendChar(0x03);
-	SendChar(0x00);
-	SendChar(0x00);
-	SendChar(0x03);
-	SendChar(0xFF);
-	SendChar(0xFD);
-	SendChar(0xEF);
+void playTrack(char trackNumber)/*1 = refleksbrik, 2 = startmelodi, 3 = slutmelodi*/{
+		CMD = 0x03;
+		Feedback = 0x00;
+		Para1 = 0x00;
+		Para2 = trackNumber;
+		checksum = (0xFFFF - (CMD+Feedback+Para1+Para2)+1);
+		checksum1 = (checksum>>8) & 0xFF;
+		checksum2 = (checksum) & 0xFF;
+		SendChar(0x7E);
+		SendChar(CMD);
+		SendChar(Feedback);
+		SendChar(Para1);
+		SendChar(Para2);
+		SendChar(checksum1);
+		SendChar(checksum2);
+		SendChar(0xEF);
+		_delay_ms(1000);
 }

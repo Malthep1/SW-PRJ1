@@ -1,6 +1,4 @@
-
-#ifndef MOTORCONTROL_H_
-#define MOTORCONTROL_H_
+#pragma once
 
 void forward();
 
@@ -12,4 +10,3 @@ void setSpeed(int speed);
 
 void SetDirection(char direction);
 
-#endif /* MOTORCONTROL_H_ */

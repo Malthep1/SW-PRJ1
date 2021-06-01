@@ -10,43 +10,42 @@ void drivingAlgorihm(){
 	switch (state)
 	{
 		case 1:
-		//Afspille firstTrack, kør fremad
-		PlayTrackOne();
+		playTrack(2);
 		forward();
 		setSpeed(50);
 		break;
 		
 		case 2:
 		// Kør fremad
-		PlayTrackTwo();
+		playTrack(1);
 		forward();
 		setSpeed(75);
 		break;
 		
 		case 3:
 		// Kør fremad op ad bakke
-		PlayTrackTwo();
+		playTrack(1);
 		forward();
 		setSpeed(100);
 		break;
 		
 		case 4:
 		// Kør fremad ned ad bakke
-		PlayTrackTwo();
+		playTrack(1);
 		forward();
 		setSpeed(25);
 		break;
 		
 		case 5:
 		// Kør fremad
-		PlayTrackTwo();
+		playTrack(1);
 		forward();
 		setSpeed(100);
 		break;
 		
 		case 6:
 		// Stop, begynd at kør baglæns
-		PlayTrackTwo();
+		playTrack(1);
 		stop();
 		backward();
 		setSpeed(50);
@@ -54,14 +53,14 @@ void drivingAlgorihm(){
 		
 		case 7:
 		// Kør baglæns (refleksbrik 6)
-		PlayTrackTwo();
+		playTrack(1);
 		backward();
 		setSpeed(75);
 		break;
 		
 		case 8:
 		// stop, begynd kør fremad (refleksbrik 5)
-		PlayTrackTwo();
+		playTrack(1);
 		stop();
 		forward();
 		setSpeed(50);
@@ -69,21 +68,21 @@ void drivingAlgorihm(){
 		
 		case 9:
 		//kør fremad (reflekrsbrik 5)
-		PlayTrackTwo();
+		playTrack(1);
 		forward();
 		setSpeed(100);
 		break;
 		
 		case 10:
 		// kør fremad (refleksrbik 6)
-		PlayTrackTwo();
+		playTrack(1);
 		forward();
 		setSpeed(100);
 		break;
 		
 		case 11:
 		// Stop (refleksbrik 7)
-		PlayTrackThree();
+		playTrack(3);
 		stop();
 		break;
 		
