@@ -11,35 +11,30 @@ void drivingAlgorihm(){
 		case 1:
 		//Afspille firstTrack, kør fremad
 		PlayTrackOne();
-		forward();
-		setSpeed(50);
+		forward(100);
 		break;
 		
 		case 2:
 		// Kør fremad
 		PlayTrackTwo();
-		forward();
 		setSpeed(75);
 		break;
 		
 		case 3:
 		// Kør fremad op ad bakke
 		PlayTrackTwo();
-		forward();
 		setSpeed(100);
 		break;
 		
 		case 4:
 		// Kør fremad ned ad bakke
 		PlayTrackTwo();
-		forward();
 		setSpeed(25);
 		break;
 		
 		case 5:
 		// Kør fremad
 		PlayTrackTwo();
-		forward();
 		setSpeed(100);
 		break;
 		
@@ -47,14 +42,12 @@ void drivingAlgorihm(){
 		// Stop, begynd at kør baglæns
 		PlayTrackTwo();
 		stop();
-		backward();
-		setSpeed(50);
+		backward(100);
 		break;
 		
 		case 7:
 		// Kør baglæns (refleksbrik 6)
 		PlayTrackTwo();
-		backward();
 		setSpeed(75);
 		break;
 		

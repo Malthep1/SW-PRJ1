@@ -2,14 +2,16 @@
 #ifndef MOTORCONTROL_H_
 #define MOTORCONTROL_H_
 
-void forward();
+//Author: Malthe
 
-void backward();
+void forward(int PWMrate);
+
+void backward(int PWMrate);
 
 void stop();
 
-void setSpeed(int speed);
+void setSpeed(int PWMrate);
 
-void SetDirection(char direction);
+void SetDirection(int direction);
 
 #endif /* MOTORCONTROL_H_ */
