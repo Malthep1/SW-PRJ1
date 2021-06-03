@@ -1,9 +1,4 @@
-/*
- * Just_testing.cpp
- *
- * Created: 30-05-2021 15:45:19
- *  Author: moham
- */ 
+
 
 
 #include <avr/io.h>
@@ -14,42 +9,23 @@ using namespace std;
 
 Lys::Lys(){
 	
-	offBothL_; 
+	offbothL_;
 	Break_;
 }
 
 Lys::Lys(bool Break, bool offBothL){
 	Break_ = Break;
-	offBothL_ = offBothL;
+	offbothL_ = offBothL;
 	setTurnOffBothL(offBothL);
 	setTurnOnFrontL();
 	setTurnOnBackL(Break);
 	
-	/*
-	if (Break_ = true)
-	{
-		// Setup microcontroller for PWM signal 
-		setTurnOnBackL(Break_);
-	}
-	else
-	{
-		
-		setTurnOnBackL(false); 
-	}
-	*/	
-	
 
 	
 	
 }
 
-// Hvis den er true, tænder forlys og baglys - hvis den er false, tænder kun forlys.
-void Lys::setTester() 
-{
-			setTurnOnFrontL();
-			setTurnOnBackL(Break_); 
-			//setTurnOffBothL(offBothL_);
-}
+
 
 
 
@@ -100,7 +76,7 @@ void Lys::setTurnOffBothL(bool offBothL){
 		//PORTB &= ~(1 << 4);
 	}
 	
-	offBothL_ = offBothL;
+	offbothL_ = offBothL;
 	
 }
 

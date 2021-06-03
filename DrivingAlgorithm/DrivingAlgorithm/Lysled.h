@@ -1,8 +1,4 @@
-/*
- *
- * Created: 30-05-2021 15:46:02
- *  Author: moham
- */ 
+
 #include <avr/io.h>
 
 
@@ -25,6 +21,8 @@ public:
 private:
  
 	bool Break_;
+	bool offbothL_;
+	
 	};
 
 
