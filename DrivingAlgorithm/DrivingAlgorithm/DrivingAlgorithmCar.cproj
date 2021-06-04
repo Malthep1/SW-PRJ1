@@ -122,6 +122,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LightsControl.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LightsControl.h">
       <SubType>compile</SubType>
     </Compile>
