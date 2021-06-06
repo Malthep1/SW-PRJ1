@@ -1,12 +1,26 @@
-
-#ifndef LIGHTSCONTROL_H_
+/*
+ //* lightscontrol.h
+ //*
+ //* Created: 03-06-2021 16:25:18
+ //*  Author: Khaalid
+ //*/ 
+ 
+  #include <avr/io.h>
+  #include <stdlib.h>
+  #include <stdbool.h>
+  
 #define LIGHTSCONTROL_H_
-#include "UART_driver.h"
 
-void turnOnFL();
 
-void turnOnBL(char state); // state er enten normal eller bremse, fx N og B
+void turnOn();
 
-void setIntensity(int intensity); // intensity er Duty cycle fra 0-100
+void setintensity(int state); 
 
-#endif /* LIGHTSCONTROL_H_ */
+
+void turnOff(); 
+
+
+
+
+
+
