@@ -1,26 +1,32 @@
 #include "MotorControl.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
 //Author: Malthe
 
+private double convertDutyCycle(int PWMrate){
+	return (PWMrate/100)*255;
+}
+
 void forward(int PWMrate){
-	digitalWrite(2, LOW)
-	analogWrite(1, PWMrate)
+	setDirection(0)
+	OCR2A = (convertDutyCycle(PWMrate)/100)*255;)
 }
 
 void backward(int PWMrate){
-	digitalWrite(2, HIGH)
-	analogWrite(1, PWMrate)
+	setDirection(1)
+	OCR2A = (convertDutyCycle(PWMrate)/100)*255;
 }
 
 void stop(){
-	analogWrite(1, 0)
+	OCR2A = 0;)
 }
 
 void setSpeed(int PWMrate){
-	analogWrite(1, PWMrate)
+	OCR2A = (convertDutyCycle(PWMrate)/100)*255;
 }
 
-void SetDirection(int direction){
+void setDirection(int direction){
 	if (direction == 1) {
 		digitalWrite(2, HIGH)
 	}
@@ -28,3 +34,14 @@ void SetDirection(int direction){
 		digitalWrite(2, LOW)
 	}
 }
+
+//Inits output PWM on pin PB4
+//Inits output HIGH or LOW on pin pb5
+void initializeMotorControl(){
+	DDRB = (1 << PB4);
+	TCCR2A = (1 << COM2A1) | (1 << WGM10) | (1 << WGM00)
+	TIMSK2 = (1 << TOIE2)
+	sei();
+	TCCR2B = (1 << CS20);
+
+}3
