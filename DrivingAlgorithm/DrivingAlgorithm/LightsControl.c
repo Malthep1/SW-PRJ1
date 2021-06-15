@@ -13,56 +13,65 @@
 
 
 
-void turnOn()
+void TurnOnFL()
 
 {
 	
-	DDRB =  0b00110000;  // PORTB bliver sat til udgang
-	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 p� arduiono 2560) bliver t�ndt
+	DDRB =  0b00010000;  // PORTB bliver sat til udgang
+	PORTB = 0b00010000;	// PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt
 	
-	OCR1A = 205;
+	
 }
 
 
-setintensity(int state)
-
-{
+void TurnonBL(){
+	
 	
 	DDRB =  0b00110000;  // PORTB bliver sat til udgang
-	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 p� arduiono 2560) bliver t�ndt (PB5 pin 11 skal baglyset tilsluttes og PB4 pin 10 (forlyset).
+	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt (PB5 pin 11 skal baglyset tilsluttes og PB4 pin 10 (forlyset).
 	
-	TCCR1A = 0b11000011;
+	TCCR1A = 0b10000011;
 	
 	TCCR1B = 0b00000001;
 	
-	OCR1A = state;
+	OCR1A = 100;
+	
+}
+
+
+setintensity()
+
+{
+	
+	DDRB =  0b00110000;  // PORTB bliver sat til udgang
+	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt (PB5 pin 11 skal baglyset tilsluttes og PB4 pin 10 (forlyset).
+	//
+	TCCR1A = 0b10000011;
+	
+	TCCR1B = 0b00000001;
+	
+
+	OCR1A = 200;
+	
+	_delay_ms(1000);
+	
+	OCR1A = 1023;
 
 	
-	if (state = 205)
-	{
-		
-		OCR1A = 205;
-		
-		_delay_ms(2000);
-
-		OCR1A = 1023;
-		
-	}
 }
+
 
 
 void turnOff()
 
 {
+	
 
 	DDRB = 0b00000000;  // PORTB bliver sat til udgang
-	PORTB = 0b0000000; // PB5 (pin 10 p� arduiono 2560) bliver t�ndt
+	PORTB = 0b0000000; // PB5 (pin 10 på arduiono 2560) bliver tændt
+	
 	
 }
-
-
-
-
 
 
 

@@ -1,23 +1,16 @@
-/*
- //* lightscontrol.h
- //*
- //* Created: 03-06-2021 16:25:18
- //*  Author: Khaalid
- //*/ 
- 
-  #include <avr/io.h>
-  #include <stdlib.h>
-  #include <stdbool.h>
-  
-#define LIGHTSCONTROL_H_
+
+#include <avr/io.h>
+#include <stdlib.h>
+#define LIGHTSCONTROL_H_setintensity();
 
 
-void turnOn();
+void TurnOnFL();
 
-void setintensity(int state); 
+void TurnonBL();
 
+void setintensity();
 
-void turnOff(); 
+void turnOff();
 
 
 

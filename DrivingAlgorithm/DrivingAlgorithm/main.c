@@ -1,6 +1,6 @@
 #include <avr/io.h>
 #include <stdio.h>
-
+#include <stdbool.h>
 
 int main(void)
 {
@@ -11,6 +11,9 @@ int main(void)
 	bool carStartBtnPressed = false;
 	drivingAlgorihm();
 }
+
+
+
 
 
 
