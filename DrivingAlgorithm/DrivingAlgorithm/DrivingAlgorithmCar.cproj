@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>{dce6c7e3-ee26-4d79-826b-08594b9ad897}</ProjectGuid>
+    <ProjectGuid>{c56ea596-a03b-4e38-8f95-5ecebffaeb24}</ProjectGuid>
     <avrdevice>ATmega2560</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
