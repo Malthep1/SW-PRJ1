@@ -2,7 +2,7 @@
 * lightscontrol.c
 *
 * Created: 03-06-2021 16:36:06
-*  Author: Khaalid
+*  Author: Khaalid & Malthe
 */
 #include <avr/io.h>
 #include <stdlib.h>
@@ -12,13 +12,19 @@
 #include <stdbool.h>
 
 
+void initLightPins(){
+	DDRB |= (1 << PB2);
+	DDRB |= (1 << PB3);
+	DDRB |= (1 << PB4);
+	DDRB |= (1 << PB5);
 
-void TurnOnFL()
+}
 
-{
+
+void TurnOnFL(){
 	
-	DDRB =  0b00010000;  // PORTB bliver sat til udgang
-	PORTB = 0b00010000;	// PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt
+	PORTB |= (1 << PB4);
+	PORTB |= (1 << PB5);
 	
 	
 }
@@ -27,8 +33,8 @@ void TurnOnFL()
 void TurnonBL(){
 	
 	
-	DDRB =  0b00110000;  // PORTB bliver sat til udgang
-	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt (PB5 pin 11 skal baglyset tilsluttes og PB4 pin 10 (forlyset).
+	PORTB |= (1 << PB2);
+	PORTB |= (1 << PB3);
 	
 	TCCR1A = 0b10000011;
 	
@@ -39,13 +45,11 @@ void TurnonBL(){
 }
 
 
-setintensity()
-
-{
+void setintensity(){
 	
 	DDRB =  0b00110000;  // PORTB bliver sat til udgang
 	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt (PB5 pin 11 skal baglyset tilsluttes og PB4 pin 10 (forlyset).
-	//
+	
 	TCCR1A = 0b10000011;
 	
 	TCCR1B = 0b00000001;
@@ -62,18 +66,13 @@ setintensity()
 
 
 
-void turnOff()
-
-{
-	
-
-	DDRB = 0b00000000;  // PORTB bliver sat til udgang
-	PORTB = 0b0000000; // PB5 (pin 10 på arduiono 2560) bliver tændt
-	
-	
+void turnOff(){
+		
+		PORTB &= ~(1 << PB2);
+		PORTB &= ~(1 << PB3);
+		PORTB &= ~(1 << PB4);
+		PORTB &= ~(1 << PB5);
 }
-
-
 
 
 

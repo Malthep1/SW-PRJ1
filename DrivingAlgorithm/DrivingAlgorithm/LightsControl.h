@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #define LIGHTSCONTROL_H_setintensity();
 
+void initLightPins();
 
 void TurnOnFL();
 
