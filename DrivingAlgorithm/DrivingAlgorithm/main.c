@@ -1,8 +1,10 @@
 #include <avr/io.h>
+#define F_CPU 16000000
 #include <stdio.h>
 #include <stdbool.h>
+#include <util/delay.h>
 #include "LightsControl.h"
-#define F_CPU 16000000
+
 
 int main(void)
 {
@@ -13,6 +15,16 @@ int main(void)
 //	bool carStartBtnPressed = false;
 //	drivingAlgorihm();
 	initLightPins();
+	_delay_ms(1000);
+	TurnOnFL();
+	_delay_ms(1000);
+	TurnonBL();
+	_delay_ms(2000);
+	setintensity(100);
+	_delay_ms(2000);
+	setintensity(200);
+	_delay_ms(1000);
+	turnOff();
 }
 
 

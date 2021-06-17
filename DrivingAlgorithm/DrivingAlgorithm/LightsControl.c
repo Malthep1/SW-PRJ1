@@ -12,66 +12,50 @@
 #include <stdbool.h>
 
 
+double scaleDutyCycle(double dutyCycle){
+	return (dutyCycle/100.0) * 255.0;
+}
+
 void initLightPins(){
-	DDRB |= (1 << PB2);
 	DDRB |= (1 << PB3);
 	DDRB |= (1 << PB4);
 	DDRB |= (1 << PB5);
+	DDRB |= (1 << PB6);
 
+	TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
+	TCCR1B |= (1 << WGM13) | (1 << WGM12) | (1 << CS10);
 }
 
 
 void TurnOnFL(){
 	
+	PORTB |= (1 << PB3);
 	PORTB |= (1 << PB4);
-	PORTB |= (1 << PB5);
 	
 	
 }
 
 
 void TurnonBL(){
-	
-	
-	PORTB |= (1 << PB2);
-	PORTB |= (1 << PB3);
-	
-	TCCR1A = 0b10000011;
-	
-	TCCR1B = 0b00000001;
-	
-	OCR1A = 100;
-	
+	OCR1A = 60;
+	OCR1B = 60;
 }
 
 
-void setintensity(){
-	
-	DDRB =  0b00110000;  // PORTB bliver sat til udgang
-	PORTB = 0b00110000; // PB5 og PB4 (pin 10 og 11 på arduiono 2560) bliver tændt (PB5 pin 11 skal baglyset tilsluttes og PB4 pin 10 (forlyset).
-	
-	TCCR1A = 0b10000011;
-	
-	TCCR1B = 0b00000001;
-	
-
-	OCR1A = 200;
-	
-	_delay_ms(1000);
-	
-	OCR1A = 1023;
-
-	
+void setintensity(double dutyCycle){
+	OCR1A = scaleDutyCycle(dutyCycle);
+	OCR1B = scaleDutyCycle(dutyCycle);
 }
-
 
 
 void turnOff(){
 		
-		PORTB &= ~(1 << PB2);
 		PORTB &= ~(1 << PB3);
 		PORTB &= ~(1 << PB4);
 		PORTB &= ~(1 << PB5);
+		PORTB &= ~(1 << PB6);
+			OCR1A = 0;
+			OCR1B = 0;
 }
 
 
