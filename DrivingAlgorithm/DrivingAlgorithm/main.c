@@ -1,10 +1,13 @@
 #define F_CPU 16000000UL
 #include <avr/io.h>
+#include <avr/interrupt.h>
+#define F_CPU 16000000
 #include <stdio.h>
+#include "LightsControl.h"
 #include <util/delay.h>
-#include <time.h>
+#include <stdbool.h>
 #include <unistd.h>
-#include "MotorControl.h"
+#include <time.h>
 
 int main(void)
 {
@@ -23,4 +26,11 @@ while (1){
 		_delay_ms(300);
 	}
 }
+
+
+
+
+
+
+
 
