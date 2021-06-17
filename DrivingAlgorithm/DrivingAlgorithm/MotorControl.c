@@ -3,44 +3,51 @@
 #include <avr/interrupt.h>
 
 //Author: Malthe
-
-private double convertDutyCycle(int PWMrate){
-	return (PWMrate/100)*255;
-}
-
-void forward(int PWMrate){
-	setDirection(0)
-	OCR2A = (convertDutyCycle(PWMrate)/100)*255;)
-}
-
-void backward(int PWMrate){
-	setDirection(1)
-	OCR2A = (convertDutyCycle(PWMrate)/100)*255;
-}
-
-void stop(){
-	OCR2A = 0;)
-}
-
-void setSpeed(int PWMrate){
-	OCR2A = (convertDutyCycle(PWMrate)/100)*255;
+double dutyCycle = 0;
+double convertDutyCycle(double PWMrate){
+	dutyCycle = (PWMrate/100)*255;
 }
 
 void setDirection(int direction){
 	if (direction == 1) {
-		digitalWrite(2, HIGH)
+		PORTB |= (1 << PB2);
 	}
-	else (direction == 0){
-		digitalWrite(2, LOW)
+	else if (direction == 0){
+		PORTB &= ~(1 << PB2);
 	}
+	else {}
 }
 
-//Inits output PWM on pin PB4
-//Inits output HIGH or LOW on pin pb5
+void forward(int PWMrate){
+	setDirection(0);
+	dutyCycle = convertDutyCycle(PWMrate);
+}
+
+void backward(int PWMrate){
+	setDirection(1);
+	dutyCycle = convertDutyCycle(PWMrate);
+}
+
+void stop(){
+	dutyCycle = 0;
+}
+
+void setSpeed(int PWMrate){
+	dutyCycle = convertDutyCycle(PWMrate);
+}
+
+//Inits output PWM on pin PB7
+//Inits output HIGH or LOW on pin PB2
 void initializeMotorControl(){
+	sei();
 	DDRB |= (1 << PB7);
 	DDRB |= (1 << PB2);
-	TCCR0A = (1 << COM2A1) | (1 << WGM10) | (1 << WGM00)
+	TCCR0A |= (1 << COM0A1) | (1 << WGM10) | (1 << WGM00);
+	TIMSK0 |= (1 << TOIE0);
 	TCCR0B = (1 << CS00);
 
-}3
+}
+
+ISR(TIMER0_OVF_vect){
+	OCR0A = dutyCycle;
+}

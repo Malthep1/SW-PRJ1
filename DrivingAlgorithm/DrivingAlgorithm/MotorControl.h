@@ -4,6 +4,8 @@
 
 //Author: Malthe
 
+void setDirection(int direction);
+
 void forward(int PWMrate);
 
 void backward(int PWMrate);
@@ -12,6 +14,6 @@ void stop();
 
 void setSpeed(int PWMrate);
 
-void SetDirection(int direction);
+void initializeMotorControl();
 
 #endif /* MOTORCONTROL_H_ */
