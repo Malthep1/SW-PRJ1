@@ -38,10 +38,9 @@ void setDirection(int direction){
 //Inits output PWM on pin PB4
 //Inits output HIGH or LOW on pin pb5
 void initializeMotorControl(){
-	DDRB = (1 << PB4);
-	TCCR2A = (1 << COM2A1) | (1 << WGM10) | (1 << WGM00)
-	TIMSK2 = (1 << TOIE2)
-	sei();
-	TCCR2B = (1 << CS20);
+	DDRB |= (1 << PB7);
+	DDRB |= (1 << PB2);
+	TCCR0A = (1 << COM2A1) | (1 << WGM10) | (1 << WGM00)
+	TCCR0B = (1 << CS00);
 
 }3
