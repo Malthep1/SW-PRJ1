@@ -6,13 +6,13 @@
 
 void setDirection(int direction);
 
-void forward(int PWMrate);
+void forward(double PWMrate);
 
-void backward(int PWMrate);
+void backward(double PWMrate);
 
 void stop();
 
-void setSpeed(int PWMrate);
+void setSpeed(double PWMrate);
 
 void initializeMotorControl();
 

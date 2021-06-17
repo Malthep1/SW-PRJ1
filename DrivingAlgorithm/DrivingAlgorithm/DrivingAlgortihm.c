@@ -55,31 +55,29 @@ void drivingAlgorihm(){
 		// stop, begynd kør fremad (refleksbrik 5)
 		PlayTrackTwo();
 		stop();
-		forward();
-		setSpeed(50);
+		forward(50);
 		break;
 		
 		case 9:
 		//kør fremad (reflekrsbrik 5)
 		PlayTrackTwo();
-		forward();
-		setSpeed(100);
+		forward(50);
 		break;
 		
 		case 10:
 		// kør fremad (refleksrbik 6)
 		PlayTrackTwo();
-		forward();
-		setSpeed(100);
+		forward(100);
 		break;
 		
 		case 11:
 		// Stop (refleksbrik 7)
 		PlayTrackThree();
-		stop()
+		stop();
 		break;
 		
 		default:
 		
 		break;
+	}
 }

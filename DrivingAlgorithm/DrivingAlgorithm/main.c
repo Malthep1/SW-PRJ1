@@ -1,7 +1,9 @@
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <stdio.h>
-#include <avr/delay.h>
+#include <util/delay.h>
+#include <time.h>
+#include <unistd.h>
 #include "MotorControl.h"
 
 int main(void)
@@ -12,23 +14,13 @@ int main(void)
 //	InitUART(9600, 8);	
 //	bool carStartBtnPressed = false;
 //	drivingAlgorihm();
-int pwmrate = 1;
+int pwmrate = 0;
 initializeMotorControl();
 while (1){
-	setDirection(1);
-	_delay_ms(100);
-	setDirection(0);
-	pwmrate += 10;
-	if(pwmrate > 100){
-		_delay_ms(100000);
-		pwmrate = 1;
-		stop();	
-		_delay_ms(100000);
-
+		forward(80);
+		_delay_ms(300);
+		backward(80);
+		_delay_ms(300);
 	}
-	setSpeed(pwmrate);
-	_delay_ms(100);
-	
-}
 }
 

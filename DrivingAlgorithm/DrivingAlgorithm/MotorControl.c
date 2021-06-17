@@ -10,20 +10,20 @@ double convertDutyCycle(double PWMrate){
 
 void setDirection(int direction){
 	if (direction == 1) {
-		PORTB |= (1 << PB2);
+		PORTB |= (1 << 2);
 	}
 	else if (direction == 0){
-		PORTB &= ~(1 << PB2);
+		PORTB &= ~(1 << 2);
 	}
 	else {}
 }
 
-void forward(int PWMrate){
+void forward(double PWMrate){
 	setDirection(0);
 	dutyCycle = convertDutyCycle(PWMrate);
 }
 
-void backward(int PWMrate){
+void backward(double PWMrate){
 	setDirection(1);
 	dutyCycle = convertDutyCycle(PWMrate);
 }
@@ -32,7 +32,7 @@ void stop(){
 	dutyCycle = 0;
 }
 
-void setSpeed(int PWMrate){
+void setSpeed(double PWMrate){
 	dutyCycle = convertDutyCycle(PWMrate);
 }
 
@@ -40,11 +40,11 @@ void setSpeed(int PWMrate){
 //Inits output HIGH or LOW on pin PB2
 void initializeMotorControl(){
 	sei();
-	DDRB |= (1 << PB7);
-	DDRB |= (1 << PB2);
-	TCCR0A |= (1 << COM0A1) | (1 << WGM10) | (1 << WGM00);
-	TIMSK0 |= (1 << TOIE0);
-	TCCR0B = (1 << CS00);
+	DDRB |= (1 << 7);
+	DDRB |= (1 << 2);
+	TCCR0A |= (1 << 7) | (1 << 1) | (1 << 0);
+	TIMSK0 |= (1 << 0);
+	TCCR0B = (1 << 0) | (1 << 3);
 
 }
 
