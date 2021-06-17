@@ -1,13 +1,10 @@
+#pragma once
 #include "uart.h"
 #include <avr/io.h>
 #include <stdlib.h>
 
 void SetupSOMO();
 
-void PlayTrackOne(); // Lyd til når banen startes
+void playTrack(char trackNumber);
 
-void PlayTrackTwo(); // Lyd til refleksbrik
-
-void PlayTrackThree(); // Lyd til når banen er gennemført
-
-void SetVolumeMax();
+void SetVolume(char volume);

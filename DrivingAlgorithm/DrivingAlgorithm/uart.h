@@ -4,6 +4,8 @@
 * Using UART 0.                         *
 * Henning Hargaard, 5/4 2019            *
 *****************************************/ 
+#pragma once
+void initUARTnew();
 void InitUART(unsigned long BaudRate, unsigned char DataBit);
 unsigned char CharReady();
 char ReadChar();

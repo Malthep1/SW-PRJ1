@@ -8,6 +8,10 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <time.h>
+#include "SoundControl.h"
+#include "switch.h"
+#include "DrivingAlgortihm.h"
+
 
 int main(void)
 {

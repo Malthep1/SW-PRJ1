@@ -1,6 +1,4 @@
-
-#ifndef LIGHTSCONTROL_H_
-#define LIGHTSCONTROL_H_
+#pragma once
 #include "uart.h"
 
 void initLightPins();

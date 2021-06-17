@@ -9,7 +9,9 @@
 #include "uart.h"
 
 // Target CPU frequency
-#define XTAL 16000000
+#define XTAL	16000000
+#define BAUD	9600
+#define BRC		((XTAL/16/BAUD) - 1)
 
 /*************************************************************************
 USART initialization.
@@ -25,6 +27,14 @@ Parameters:
     Databit: Wanted number of Data Bits (5-8).
     Parity: 'E' (Even parity), 'O' (Odd parity), otherwise No Parity.
 *************************************************************************/
+void initUARTnew() //9600 bps, no parity, 1 stop bit, 8 data bit
+{
+		UBRR0H = (BRC >> 8);
+		UBRR0L = BRC;
+		UCSR0B = (1 << TXEN0);
+		UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
+}
+
 void InitUART(unsigned long BaudRate, unsigned char DataBit)
 {
   if ((BaudRate >= 300) && (BaudRate <= 115200) && (DataBit >=5) && (DataBit <= 8))
