@@ -11,10 +11,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 
-
-double scaleDutyCycle(double dutyCycle){
-	return (dutyCycle/100.0) * 255.0;
-}
+double dutyCycle = 0;
 
 void initLightPins(){
 	DDRB |= (1 << PB3);
@@ -23,7 +20,7 @@ void initLightPins(){
 	DDRB |= (1 << PB6);
 
 	TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
-	TCCR1B |= (1 << WGM13) | (1 << WGM12) | (1 << CS10);
+	TIMSK1 |= (1 << TOIE1);
 }
 
 
@@ -37,14 +34,16 @@ void TurnOnFL(){
 
 
 void TurnonBL(){
-	OCR1A = 60;
-	OCR1B = 60;
+	dutyCycle = 50;
+	OCR1A = dutyCycle;
+	OCR1B = dutyCycle;
+	
+	TCCR1B |= (1 << WGM13) | (1 << WGM12) | (1 << CS10);
 }
 
 
-void setintensity(double dutyCycle){
-	OCR1A = scaleDutyCycle(dutyCycle);
-	OCR1B = scaleDutyCycle(dutyCycle);
+void setLightIntensity(double newDutyCycle){
+	dutyCycle = (newDutyCycle/100.0) * 255.0;
 }
 
 
@@ -52,11 +51,11 @@ void turnOff(){
 		
 		PORTB &= ~(1 << PB3);
 		PORTB &= ~(1 << PB4);
-		PORTB &= ~(1 << PB5);
-		PORTB &= ~(1 << PB6);
-			OCR1A = 0;
-			OCR1B = 0;
+		dutyCycle = 0;
 }
 
-
+ISR(TIMER1_OVF_vect){
+		OCR1A = dutyCycle;
+		OCR1B = dutyCycle;
+}
 

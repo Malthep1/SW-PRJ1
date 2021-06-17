@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #define F_CPU 16000000
 #include <stdio.h>
 #include <stdbool.h>
@@ -14,15 +15,16 @@ int main(void)
 //	InitUART(9600, 8);
 //	bool carStartBtnPressed = false;
 //	drivingAlgorihm();
+	sei();
 	initLightPins();
 	_delay_ms(1000);
 	TurnOnFL();
-	_delay_ms(1000);
+	_delay_ms(20000);
 	TurnonBL();
 	_delay_ms(2000);
-	setintensity(100);
+	setLightIntensity(100);
 	_delay_ms(2000);
-	setintensity(200);
+	setLightIntensity(200);
 	_delay_ms(1000);
 	turnOff();
 }

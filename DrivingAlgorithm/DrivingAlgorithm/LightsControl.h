@@ -9,7 +9,7 @@ void TurnOnFL();
 
 void TurnonBL();
 
-void setintensity();
+void setLightIntensity();
 
 void turnOff();
 
